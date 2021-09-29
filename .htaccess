@@ -1,0 +1,82 @@
+AuthGroupFile /dev/null
+AuthType CAS
+AuthName "IU Network ID"
+
+<RequireAll>
+# for CAS
+# specific
+ <RequireAny>
+    # a list of CAS network IDs - adjust as needed
+    require user alirober galter budu gwpalmer ttwu nschrode blbudutest1 jburgoon
+    require user bjmoelle nichodan sbadams lauhuds myers maragros lwking cjball melj ellijord jopadams uisoscan
+ </RequireAny>
+
+
+ <RequireAny>
+#SSL VPN Address Space
+#IUB	
+   Require ip 140.182.72.0/22
+   Require ip 140.182.76.0/22
+   Require ip 140.182.80.0/22
+#IUPUI
+   Require ip 140.182.64.0/22
+   Require ip 140.182.68.0/22
+#IUE
+   Require ip 140.182.85.0/25
+#IUK
+   Require ip 140.182.84.128/25
+#IUN
+   Require ip 140.182.84.0/25
+#IUSB
+   Require ip 140.182.86.0/25
+#IUS
+   Require ip 140.182.86.128/25
+#IUFW
+   Require ip 140.182.85.128/25
+#Groups realm 	
+   Require ip 140.182.28.0/22
+   Require ip 140.182.88.0/22
+   Require ip 140.182.92.0/22
+   Require ip 140.182.96.0/22
+   Require ip 140.182.100.0/22
+   Require ip 140.182.104.0/22
+   Require ip 140.182.108.0/22
+
+# IU ipv6 space
+   Require ip 2001:18e8::/32
+
+# IU top level domains(as returned in DNS ipv4)
+   Require host iu.edu
+   Require host indiana.edu
+   Require host iupui.edu
+   Require host iue.edu
+   Require host iuk.edu
+   Require host iusb.edu
+   Require host iupuc.edu
+   Require host iun.edu
+
+ </RequireAny>
+</RequireAll>
+
+# No display access for .user.ini
+<Files ".user.ini"> 
+    Require all denied
+</Files>
+
+# Clickjacking protection
+Header unset Content-Security-Policy
+
+#Add the entire CSP key value pairs that you want below.
+
+Header add Content-Security-Policy "default-src 'self' budu.sitehost-test.iu.edu *.iu.edu fonts.iu.edu assets.iu.edu schema.org github.com *.google.com *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleapis.com googletagmanager.com code.jquery.com 'unsafe-eval' 'unsafe-inline';" 
+#Header add Content-Security-Policy "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: 'unsafe-inline'"
+#Header add Content-Security-Policy "script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: 'unsafe-inline'"
+#Header add Content-Security-Policy "script-src https://budu.sitehost-test.iu.edu/search.php 'unsafe-inline';
+#Header add Content-Security-Policy "script-src 'self' assets.iu.edu;"
+#Header add Content Security Policy "font-src 'self' data:; 
+
+#These headers are also helpful in increasing security
+Header set X-Content-Type-Options "nosniff"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "DENY"
+Header set Strict-Transport-Security "max-age=631138519; includeSubDomains"
