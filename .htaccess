@@ -68,7 +68,7 @@ Header unset Content-Security-Policy
 
 #Add the entire CSP key value pairs that you want below.
 
-#Header add Content-Security-Policy "default-src 'self' budu.sitehost-test.iu.edu *.iu.edu fonts.iu.edu assets.iu.edu schema.org github.com *.google.com *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleapis.com googletagmanager.com code.jquery.com 'unsafe-eval' 'unsafe-inline';" 
+Header add Content-Security-Policy "default-src 'self' budu.sitehost-test.iu.edu *.iu.edu fonts.iu.edu assets.iu.edu schema.org github.com *.google.com *.google-analytics.com *.googletagmanager.com *.gstatic.com *.googleapis.com googletagmanager.com code.jquery.com 'unsafe-eval' 'unsafe-inline';" 
 #Header add Content-Security-Policy "default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: 'unsafe-inline'"
 #Header add Content-Security-Policy "script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'; img-src https: 'unsafe-inline'"
 #Header add Content-Security-Policy "script-src https://budu.sitehost-test.iu.edu/search.php 'unsafe-inline';
